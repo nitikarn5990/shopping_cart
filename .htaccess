@@ -1,0 +1,99 @@
+#Options +FollowSymLinks
+
+#RewriteEngine On
+
+#RewriteBase /
+
+
+
+
+
+
+
+# remove www. from HTTPS requests
+
+#RewriteCond %{HTTPS} on
+
+#RewriteCond %{HTTP_HOST} ^www\.(exchangercoin\.com)$ [NC]
+
+#RewriteRule .* https://%1/$0 [R,L]
+
+
+
+# redirect HTTP requests to HTTPS
+
+#RewriteCond %{HTTPS} off
+
+#RewriteCond %{HTTP_HOST} ^(?:www\.)?(exchangercoin\.com)$ [NC]
+
+#RewriteRule .* https://%1/$0 [R,L]
+
+
+
+# remove www from host
+
+#RewriteCond %{HTTP_HOST} ^www\.(.+)
+
+#RewriteCond %{HTTPS}s/%1 ^(on(s)|offs)/(.+)
+
+#RewriteRule ^ http%2://%3%{REQUEST_URI} [L,R=301]
+
+
+
+#RewriteRule ^(.+)$ index.php?page=$1 [L,QSA]
+
+#RewriteRule ^([a-zA-Z0-9-zก-ฮ0-๙\-]+)\.html$ index.php?page=$1 [L,QSA]
+
+#RewriteRule ^([a-zA-Z0-9-zก-ฮ0-๙\-]+)?$ index.php?page=$1 [L,QSA]
+
+
+
+
+
+#RewriteRule ^([a-zA-Z0-9-zก-ฮ0-๙\-]+)?$ /index.php?controllers=$1 [L]
+
+#RewriteRule ^([a-zA-Z0-9-zก-ฮ0-๙\-]+)/$ /index.php?controllers=$1 [L]
+
+
+
+#RewriteRule ^([^/]*)$ /admin/index.php?controllers=$1 [L]
+
+
+
+#RewriteEngine On
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+
+#RewriteCond %{REQUEST_FILENAME} !-d
+
+
+
+#RewriteRule ^([^/]*)$ /?controllers=$1 [L]
+
+#RewriteRule ^([^/]*)/([^/]*)$ /?controllers=$1&type=$2 [L]
+
+
+
+RewriteEngine On
+
+#RewriteBase /
+
+#RewriteRule ^(css|images|img|js|fonts) - [L]
+
+
+
+RewriteRule ^([ก-ฮa-zA-Z0-9เ\_-]+).html$ index.php?controllers=$1 [L]
+
+RewriteRule ^([ก-ฮa-zA-Z0-9เ\_-]+)/([ก-ฮa-zA-Z0-9เ\_-]+).html$ index.php?controllers=$1&catID=$2 [L]
+
+RewriteRule ^([ก-ฮa-zA-Z0-9เ\_-]+)/([ก-ฮa-zA-Z0-9เ\_-]+)/([ก-ฮa-zA-Z0-9เ\_-]+).html$ index.php?controllers=$1&catID=$2&productID=$3 [L]
+
+
+
+
+
+ 
+
+ 
+
+ 
