@@ -67,6 +67,9 @@
 	$shipping_total = new Shipping_total;
 	$google_map = new Google_map;
 	$tag = new Tag;
+        $distributor = new Distributor;
+        $order_in_store = new Order_in_store;
+        $order_in_store_detail = new Order_in_store_detail;
 	
 	$ProID = $_GET['productID'];
 ?>

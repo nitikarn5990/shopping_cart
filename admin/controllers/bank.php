@@ -3,10 +3,6 @@
 
 	// If they are saving the Information	
 
-
-	
-
-
 	if ($_POST['submit_bt'] == 'บันทึกข้อมูล' || $_POST['submit_bt'] == 'บันทึกข้อมูล และแก้ไขต่อ'){
 
 
@@ -314,7 +310,8 @@
                         <tr style="font-size: 12px;">
                             <th><input type="checkbox" id="checkAll"></th>
                             <th>รหัส</th>
-                            <th>ชื่อธนาคาร</th>
+                            <th>ชื่อบัญชี</th>
+                            <th>ธนาคาร</th>
                             <th>สถานะ</th>
                             <th>แก้ไขล่าสุด</th>
                             <th>ตัวเลือก</th>
@@ -338,6 +335,7 @@
                             <td class="center" width="5%" style="font-size: 12px;"><input type="checkbox" value="<?php echo $row['id'];?>" id="chkboxID"></td>
                             <td class="center" style="font-size: 12px;"><?php echo $row['id'];?></td>
                             <td style="font-size: 12px;"><?php echo $row['bank_name'];?></td>
+                            <td style="font-size: 12px;text-align: center;"><?php echo $bank_company->getDataDesc('bank_name','id = ' . $row['bank_id']); ?></td>
                             <td class="center" style="font-size: 12px;"><i class="icol-<?php echo ($row['status'] == 'ใช้งาน') ? 'accept' : 'cross'?>" title="<?php echo $row['status']?>"></i></td>
                             <td class="center" style="font-size: 12px;"><?php echo $functions->ShowDateThTime($row['updated_at'])?></td>
                             <td class="center" style="font-size: 12px;"><a href="<?php echo ADDRESS_ADMIN_CONTROL?>bank&action=edit&id=<?php echo $row['id']?>" class="btn btn-primary btn-small">แก้ไข / ดู</a> <a href="#" onclick="if(confirm('คุณต้องการลบข้อมูลนี้หรือใม่?')==true){document.location.href='<?php echo ADDRESS_ADMIN_CONTROL?>bank&action=del&id=<?php echo $row['id']?>'}" class="btn btn-danger btn-small">ลบ</a></td>

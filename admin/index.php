@@ -5,17 +5,16 @@ include_once ( '../lib/application_admin.php');
 
 
 if ($_SESSION ['admin_id'] == "" || $_COOKIE['user'] == '') {
- 
- 
+
+
     header('location:' . ADDRESS_ADMIN . 'login.php');
 }
-if($_SESSION['admin_id'] == 'demo'){
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_GET['action'] == 'del'){
-			SetAlert('DEMO MODE ไม่สามารถกระทำรายการได้');
-			header('location:'.ADDRESS_ADMIN_CONTROL .'demo'); 
-			exit();
-	}
-	
+if ($_SESSION['admin_id'] == 'demo') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_GET['action'] == 'del') {
+        SetAlert('DEMO MODE ไม่สามารถกระทำรายการได้');
+        header('location:' . ADDRESS_ADMIN_CONTROL . 'demo');
+        exit();
+    }
 }
 ?>
 <html lang="en">
@@ -78,8 +77,7 @@ if($_SESSION['admin_id'] == 'demo'){
         <script src="assets/jui/js/jquery-ui-1.9.2.min.js"></script>
         <script src="assets/jui/jquery.ui.timepicker.min.js"></script>
         <script src="assets/jui/jquery.ui.touch-punch.min.js"></script>
-        <link rel="stylesheet" type="text/css"
-              href="assets/jui/css/jquery.ui.all.css" media="screen">
+    
 
         <!-- JS Plugins -->
 
@@ -188,17 +186,17 @@ if($_SESSION['admin_id'] == 'demo'){
         <!-- JS Customizer -->
 
         <script src="assets/js/core/dandelion.customizer.js"></script>
-        
+
         <!-- Input Tag -->
         <script src="assets/input_tags/bootstrap-tagsinput-angular.js"></script>
         <script src="assets/input_tags/bootstrap-tagsinput.js"></script>
-         <link rel="stylesheet" href="assets/input_tags/bootstrap-tagsinput.css">
-         <style>
-		 ul li.actived{
-					  background:#CCC;	
-					}
-		 </style>
-        
+        <link rel="stylesheet" href="assets/input_tags/bootstrap-tagsinput.css">
+        <style>
+            ul li.actived{
+                background:#CCC;	
+            }
+        </style>
+
     </head>
 
     <body cz-shortcut-listen="true">
@@ -217,9 +215,9 @@ if($_SESSION['admin_id'] == 'demo'){
                         <div id="da-logo-wrap">
                             <div id="da-logo">
                                 <div id="da-logo-img">
-                                    
+
 <!--    													 <img src="assets/images/logo.png" alt=""> -->
-   									
+
                                 </div>
                             </div>
                         </div>
@@ -230,7 +228,7 @@ if($_SESSION['admin_id'] == 'demo'){
                                 <div id="da-user-profile" data-toggle="dropdown" class="clearfix">
                                     <div id="da-user-avatar"></div>
                                     <div id="da-user-info">
-                                       <?= $_SESSION['admin_id'] == 'demo' ? 'Demo':'Admin Administrator'?>  <span class="da-user-title"><?= $_SESSION['admin_id'] == 'demo' ? 'Demo':'Admin Administrator'?> </span>
+                                        <?= $_SESSION['admin_id'] == 'demo' ? 'Demo' : 'Admin Administrator' ?>  <span class="da-user-title"><?= $_SESSION['admin_id'] == 'demo' ? 'Demo' : 'Admin Administrator' ?> </span>
                                     </div>
                                 </div>
                                 <ul class="dropdown-menu">
@@ -272,45 +270,45 @@ if($_SESSION['admin_id'] == 'demo'){
                                                         <li class="unread">
 
 
-                                                    <a href="<?php echo ADDRESS_ADMIN_CONTROL?>payment_confirm&action=edit&id=<?=$row['id']?>">
+                                                            <a href="<?php echo ADDRESS_ADMIN_CONTROL ?>payment_confirm&action=edit&id=<?= $row['id'] ?>">
 
 
-                                                        <span class="thumbnail"><img src="assets/images/icon-payment.png" alt=""></span>
+                                                                <span class="thumbnail"><img src="assets/images/icon-payment.png" alt=""></span>
 
 
-                                                        <span class="info" style="  padding-top: 5px;">
+                                                                <span class="info" style="  padding-top: 5px;">
 
 
-                                                            <span class="name">เลขที่สั่งซื้อ <?php echo $functions->padLeft($row['orders_id'], 5, "0") ?></span>
+                                                                    <span class="name">เลขที่สั่งซื้อ <?php echo $functions->padLeft($row['orders_id'], 5, "0") ?></span>
 
 
-                                                            <span class="message">
+                                                                    <span class="message">
 
 
-                                                                ยอดเงินการแจ้งชำระ <?php echo $row['transfer_amount'] ?>
+                                                                        ยอดเงินการแจ้งชำระ <?php echo $row['transfer_amount'] ?>
 
 
-                                                            </span>
+                                                                    </span>
 
 
-                                                            <span class="time">
+                                                                    <span class="time">
 
 
-                                                               <?php echo $functions->ShowDateThTime($row['created_at']) ?> 
+                                                                        <?php echo $functions->ShowDateThTime($row['created_at']) ?> 
 
 
-                                                            </span>
+                                                                    </span>
 
 
-                                                        </span>
+                                                                </span>
 
 
-                                                    </a>
+                                                            </a>
 
 
-                                                </li>
-                                                        
-                            
+                                                        </li>
+
+
 
 
 
@@ -389,131 +387,162 @@ if($_SESSION['admin_id'] == 'demo'){
                         <!-- Main Navigation -->
                         <div id="da-main-nav" class="btn-container">
                             <ul>
-                                <li class="<?= PAGE_CONTROLLERS == 'slides' || PAGE_CONTROLLERS == 'ads' || PAGE_CONTROLLERS == 'home' 
-								|| PAGE_CONTROLLERS == 'address' || PAGE_CONTROLLERS == 'address_map' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
+                                <li class="<?= PAGE_CONTROLLERS == 'slides' || PAGE_CONTROLLERS == 'ads' || PAGE_CONTROLLERS == 'home' || PAGE_CONTROLLERS == 'address' || PAGE_CONTROLLERS == 'address_map' ? 'active' : ''
+                                            ?>"><a href="#"> <!-- Icon Container --> <span
                                             class="da-nav-icon"> <img src="../images/icon-home.png"
                                                                   width="32" height="32">
                                         </span> HOME
                                     </a>
                                     <ul>
-                                        <li class="<?= PAGE_CONTROLLERS == 'slides' ? 'actived':''?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>slides">ภาพสไลด์</a></li>
-                                        <li class="<?= PAGE_CONTROLLERS == 'ads' ? 'actived':''?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>ads">ads</a></li>
-                                        <li class="<?= PAGE_CONTROLLERS == 'home' ? 'actived':''?>"><a
+                                        <li class="<?= PAGE_CONTROLLERS == 'slides' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>slides">ภาพสไลด์</a></li>
+                                        <li class="<?= PAGE_CONTROLLERS == 'ads' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>ads">ads</a></li>
+                                        <li class="<?= PAGE_CONTROLLERS == 'home' ? 'actived' : '' ?>"><a
                                                 href="<?php echo ADDRESS_ADMIN_CONTROL ?>home&action=edit&id=1">รายละเอียด</a></li>
-                                        <!--  <li><a href="<?php //echo ADDRESS_ADMIN_CONTROL     ?>google_map&action=edit&id=1">แผนที่</a></li>-->
-                                        <li class="<?= PAGE_CONTROLLERS == 'address' ? 'actived':''?>"><a
+                                        <!--  <li><a href="<?php //echo ADDRESS_ADMIN_CONTROL       ?>google_map&action=edit&id=1">แผนที่</a></li>-->
+                                        <li class="<?= PAGE_CONTROLLERS == 'address' ? 'actived' : '' ?>"><a
                                                 href="<?php echo ADDRESS_ADMIN_CONTROL ?>address&action=edit&id=1">ที่อยู่</a></li>
-                                        <li class="<?= PAGE_CONTROLLERS == 'address_map' ? 'actived':''?>"><a
+                                        <li class="<?= PAGE_CONTROLLERS == 'address_map' ? 'actived' : '' ?>"><a
                                                 href="<?php echo ADDRESS_ADMIN_CONTROL ?>address_map&action=edit&id=1">แผนที่</a></li>
                                     </ul></li>
-                                <li class="<?= PAGE_CONTROLLERS == 'customer' ? 'active':''?>"><a href="#"> <!-- Icon Container --> <span
+                                <li class="<?= PAGE_CONTROLLERS == 'customer' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
                                             class="da-nav-icon"> <img src="assets/images/icon-user.png"
                                                                   width="32" height="32">
-                                        </span> Users
+                                        </span> ข้อมูลลูกค้า
                                     </a>
                                     <ul>
-                                        <li class="<?= PAGE_CONTROLLERS == 'customer' ? 'actived':''?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>customer">จัดการผู้ใช้งาน</a></li>
-									
+                                        <li class="<?= PAGE_CONTROLLERS == 'customer' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>customer">จัดการข้อมูลลูกค้า</a></li>
+
                                     </ul>
-                                    </li>
-                                <li class="<?= PAGE_CONTROLLERS == 'all_product' || PAGE_CONTROLLERS == 'category' || PAGE_CONTROLLERS == 'product' ? 'active':''?>"><a href="#"> <!-- Icon Container --> <span
+                                </li>
+                                <li class="<?= PAGE_CONTROLLERS == 'all_product' || PAGE_CONTROLLERS == 'category' || PAGE_CONTROLLERS == 'product' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
                                             class="da-nav-icon"> <img src="assets/images/icon-product.png"
                                                                   width="32" height="32">
                                         </span> PRODUCTS
                                     </a>
                                     <ul>
-                                        <li class="<?= PAGE_CONTROLLERS == 'all_product' ? 'actived':''?>"><a
+                                        <li class="<?= PAGE_CONTROLLERS == 'all_product' ? 'actived' : '' ?>"><a
                                                 href="<?php echo ADDRESS_ADMIN_CONTROL ?>all_product&action=edit&id=1">รายละเอียด</a></li>
-                                        <li class="<?= PAGE_CONTROLLERS == 'category' ? 'actived':''?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>category">จัดการหมวดหมู่สินค้า</a></li>
-                                        <li class="<?= PAGE_CONTROLLERS == 'product' ? 'actived':''?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>product">จัดการสินค้า</a></li>
+                                        <li class="<?= PAGE_CONTROLLERS == 'category' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>category">จัดการหมวดหมู่สินค้า</a></li>
+                                        <li class="<?= PAGE_CONTROLLERS == 'product' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>product">จัดการสินค้า</a></li>
                                     </ul></li>
-                                <li class="<?= PAGE_CONTROLLERS == 'ordered' ? 'active':''?>"><a href="#"> <!-- Icon Container --> <span
+                                <li class="<?= PAGE_CONTROLLERS == 'ordered' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
                                             class="da-nav-icon"> <img src="../images/icon-product.png"
                                                                   width="32" height="32">
                                         </span> ORDER
                                     </a>
                                     <ul>
-                                        <li class="<?= PAGE_CONTROLLERS == 'ordered' ? 'actived':''?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>ordered">ข้อมูลการสั่งซื้อ</a></li>
+                                        <li class="<?= PAGE_CONTROLLERS == 'ordered' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>ordered">ข้อมูลการสั่งซื้อ</a></li>
 
                                     </ul></li>
-                                <li class="<?= PAGE_CONTROLLERS == 'shipping' ? 'active':''?>"><a href="#"> <!-- Icon Container --> <span
+                                <li class="<?= PAGE_CONTROLLERS == 'shipping' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
                                             class="da-nav-icon"> <img src="assets/images/icon-shipping.png"
                                                                   width="32" height="32">
                                         </span> SHIPPING
                                     </a>
                                     <ul>
-                                        <li class="<?= PAGE_CONTROLLERS == 'shipping' ? 'actived':''?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>shipping">ตั้งค่า
+                                        <li class="<?= PAGE_CONTROLLERS == 'shipping' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>shipping">ตั้งค่า
                                                 ค่าส่งของ</a></li>
 
-                                    </ul></li>
+                                    </ul>
+                                </li>
+                                <li class="<?= PAGE_CONTROLLERS == 'distributor' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
+                                            class="da-nav-icon"> <img src="assets/images/icon-shippings.png"
+                                                                  width="32" height="32">
+                                        </span>จัดการตัวแทนจำหน่าย
+                                    </a>
+                                    <ul>
+                                        <li class="<?= PAGE_CONTROLLERS == 'distributor' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>distributor">
+                                                ตัวแทนจำหน่าย</a></li>
+
+                                    </ul>
+                                </li>
+                                <li class="<?= PAGE_CONTROLLERS == 'order_in_store' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
+                                            class="da-nav-icon"> <img src="assets/images/icon-shippings.png"
+                                                                  width="32" height="32">
+                                        </span>จัดการสั่งซื้อสินค้าเข้าร้าน
+                                    </a>
+                                    <ul>
+                                         <li class="<?= PAGE_CONTROLLERS == 'order_in_store' && $_GET['type']=='po' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>order_in_store&type=po">
+                                                รายการสั่งซื้อสินค้าเข้าร้าน</a>
+                                        </li>
+                                        <li class="<?= PAGE_CONTROLLERS == 'order_in_store'  && $_GET['type']=='' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>order_in_store">
+                                                สั่งซื้อสินค้าเข้าร้าน</a>
+                                        </li>
+                                           <li class="<?= PAGE_CONTROLLERS == 'order_in_store'  && $_GET['type']=='' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>order_in_store">
+                                                ตรวจรับสินค้า</a>
+                                        </li>
 
 
-                                <li class="<?= PAGE_CONTROLLERS == 'blog_category' || PAGE_CONTROLLERS == 'blog'? 'active':''?>"><a href="#"> <!-- Icon Container --> <span
+                                    </ul>
+                                </li>
+
+
+                                <li class="<?= PAGE_CONTROLLERS == 'blog_category' || PAGE_CONTROLLERS == 'blog' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
                                             class="da-nav-icon"> <img src="assets/images/icon-blog.png"
                                                                   width="32" height="32">
                                         </span> BLOG
                                     </a>
                                     <ul>
 
-                                        <li class="<?= PAGE_CONTROLLERS == 'blog_category' ? 'actived':''?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>blog_category">จัดการหมวดหมู่บล็อก</a></li>
-                                        <li class="<?= PAGE_CONTROLLERS == 'blog' ? 'actived':''?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>blog">จัดการบล็อก</a></li>
+                                        <li class="<?= PAGE_CONTROLLERS == 'blog_category' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>blog_category">จัดการหมวดหมู่บล็อก</a></li>
+                                        <li class="<?= PAGE_CONTROLLERS == 'blog' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>blog">จัดการบล็อก</a></li>
                                     </ul></li>
-                                <li class="<?= PAGE_CONTROLLERS == 'best_offer' ? 'active':''?>"><a href="#"> <!-- Icon Container --> <span
+                                <li class="<?= PAGE_CONTROLLERS == 'best_offer' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
                                             class="da-nav-icon"> <img src="assets/images/icon-offer.png"
                                                                   width="32" height="32">
                                         </span> BEST OFFRER
                                     </a>
                                     <ul>
-                                        <li class="<?= PAGE_CONTROLLERS == 'best_offer' ? 'actived':''?>"><a
+                                        <li class="<?= PAGE_CONTROLLERS == 'best_offer' ? 'actived' : '' ?>"><a
                                                 href="<?php echo ADDRESS_ADMIN_CONTROL ?>best_offer&action=edit&id=1">รายละเอียด</a></li>
                                     </ul></li>
-                                <li class="<?= PAGE_CONTROLLERS == 'shopping_guide' ? 'active':''?>"><a href="#"> <!-- Icon Container --> <span
+                                <li class="<?= PAGE_CONTROLLERS == 'shopping_guide' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
                                             class="da-nav-icon"> <img src="../images/icon-shopping.png"
                                                                   width="32" height="32">
                                         </span> ORDER & PAY
                                     </a>
                                     <ul>
-                                        <li class="<?= PAGE_CONTROLLERS == 'shopping_guide' ? 'actived':''?>"><a
+                                        <li class="<?= PAGE_CONTROLLERS == 'shopping_guide' ? 'actived' : '' ?>"><a
                                                 href="<?php echo ADDRESS_ADMIN_CONTROL ?>shopping_guide&action=edit&id=1">รายละเอียด</a></li>
                                     </ul></li>
-                                <li class="<?= PAGE_CONTROLLERS == 'bank' ||  PAGE_CONTROLLERS == 'payment_confirm'? 'active':''?>"><a href="#"> <!-- Icon Container --> <span
+                                <li class="<?= PAGE_CONTROLLERS == 'bank' || PAGE_CONTROLLERS == 'payment_confirm' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
                                             class="da-nav-icon"> <img src="assets/images/icon-payment2.png"
                                                                   width="32" height="32">
                                         </span> PAYMENT CONFIRM
                                     </a>
                                     <ul>
-                                        <li class="<?= PAGE_CONTROLLERS == 'bank' ? 'actived':''?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>bank">จัดการธนาคาร</a></li>
-                                        <li class="<?= PAGE_CONTROLLERS == 'payment_confirm' ? 'actived':''?>"><a
+                                        <li class="<?= PAGE_CONTROLLERS == 'bank' ? 'actived' : '' ?>"><a href="<?php echo ADDRESS_ADMIN_CONTROL ?>bank">จัดการธนาคาร</a></li>
+                                        <li class="<?= PAGE_CONTROLLERS == 'payment_confirm' ? 'actived' : '' ?>"><a
                                                 href="<?php echo ADDRESS_ADMIN_CONTROL ?>payment_confirm">แจ้งการชำระเงิน
                                             </a></li>
                                     </ul></li>
-                                <li class="<?= PAGE_CONTROLLERS == 'about' ? 'active':''?>"><a href="#"> <!-- Icon Container --> <span
+                                <li class="<?= PAGE_CONTROLLERS == 'about' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
                                             class="da-nav-icon"> <img src="../images/icon-about.png"
                                                                   width="32" height="32">
                                         </span> ABOUT US
                                     </a>
                                     <ul>
-                                        <li class="<?= PAGE_CONTROLLERS == 'about' ? 'actived':''?>"><a
+                                        <li class="<?= PAGE_CONTROLLERS == 'about' ? 'actived' : '' ?>"><a
                                                 href="<?php echo ADDRESS_ADMIN_CONTROL ?>about&action=edit&id=1">รายละเอียด</a></li>
                                     </ul></li>
-                                <li class="<?= PAGE_CONTROLLERS == 'contact' || PAGE_CONTROLLERS == 'contact_message' ? 'active':''?>"><a href="#"> <!-- Icon Container --> <span
+                                <li class="<?= PAGE_CONTROLLERS == 'contact' || PAGE_CONTROLLERS == 'contact_message' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
                                             class="da-nav-icon"> <img src="../images/icon-contact.png"
                                                                   width="32" height="32">
                                         </span> CONTACT US
                                     </a>
                                     <ul>
-                                        <li class="<?= PAGE_CONTROLLERS == 'contact' ? 'actived':''?>"><a
+                                        <li class="<?= PAGE_CONTROLLERS == 'contact' ? 'actived' : '' ?>"><a
                                                 href="<?php echo ADDRESS_ADMIN_CONTROL ?>contact&action=edit&id=1">รายละเอียด</a></li>
-                                        <li class="<?= PAGE_CONTROLLERS == 'contact_message' ? 'actived':''?>"><a
+                                        <li class="<?= PAGE_CONTROLLERS == 'contact_message' ? 'actived' : '' ?>"><a
                                                 href="<?php echo ADDRESS_ADMIN_CONTROL ?>contact_message">ข้อความ</a></li>
                                     </ul></li>
-                                       <li class="<?= PAGE_CONTROLLERS == 'tag' ? 'active':''?>"><a href="#"> <!-- Icon Container --> <span
+                                <li class="<?= PAGE_CONTROLLERS == 'tag' ? 'active' : '' ?>"><a href="#"> <!-- Icon Container --> <span
                                             class="da-nav-icon"> <img src="../images/icon-about.png"
                                                                   width="32" height="32">
                                         </span> Tag สินค้า
                                     </a>
                                     <ul>
-                                        <li class="<?= PAGE_CONTROLLERS == 'tag' ? 'actived':''?>"><a
+                                        <li class="<?= PAGE_CONTROLLERS == 'tag' ? 'actived' : '' ?>"><a
                                                 href="<?php echo ADDRESS_ADMIN_CONTROL ?>tag">จัดการ Tag</a></li>
                                     </ul></li>
                             </ul>
@@ -526,15 +555,16 @@ if($_SESSION['admin_id'] == 'demo'){
                         <!-- Content Area -->
                         <div id="da-content-area">
                             <?php
-							if(PAGE_CONTROLLERS == ''){
-                        			   // include ("controllers/slides.php");
-										header("location:".ADDRESS_ADMIN_CONTROL.'slides');
-							}else{
-								    include ("controllers/" . PAGE_CONTROLLERS . ".php");
-							}
+                            if (PAGE_CONTROLLERS == '') {
+                                // include ("controllers/slides.php");
+                                header("location:" . ADDRESS_ADMIN_CONTROL . 'slides');
+                            } else {
+                                include ("controllers/" . PAGE_CONTROLLERS . ".php");
+                            }
                             ?>
                         </div>
                     </div>
+                    <script src="assets/js/verify.notify.min.js"></script>
                     <script type="text/javascript">
 //$( document ).ready(function() {
                         function addfile() {
@@ -546,8 +576,6 @@ if($_SESSION['admin_id'] == 'demo'){
                             if (conveniancecount > 2) {
                                 $("div #filecopy:last").remove();
                             }
-
-
 
 
                         }
@@ -613,10 +641,10 @@ if($_SESSION['admin_id'] == 'demo'){
                         .label.good-job {
                             background-color: #9C41C6;
                         }
-						   tr {
-						font-size: 12px;
-					}
-			
+                        tr {
+                            font-size: 12px;
+                        }
+
                     </style>
                 </div>
             </div>

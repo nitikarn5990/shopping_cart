@@ -114,7 +114,7 @@
 				fmAllow: true, 
 				fmOpen : function(callback) {
 					$('<div id="myelfinder"></div>').elfinder({
-						url : 'plugins/elfinder/connectors/php/connector.php', 
+						url : 'plugins/elFinder_2_1/connectors/php/connector.php', 
 						lang : 'en', 
 						height: 300, /*
 						toolbar : [
